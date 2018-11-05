@@ -1,8 +1,12 @@
 ---
 title: Ek Muskan Apne Naam Karde
 categories:
-date:
-featured_image:
+  - Motivational
+  - Speech
+  - Love
+  - Feelings
+date: 2018-11-05 14:00:00
+featured_image: /Screenshot_20181103-090308.png
 recipe:
   servings:
   prep:
