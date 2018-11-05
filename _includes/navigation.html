@@ -1,7 +1,11 @@
 <nav>
-  <ul class="header__list">
-    <li><a href="{{ '/' | prepend: site.baseurl }}">Stories</a></li>
-    <li><a href="{{ '/style-guide' | prepend: site.baseurl }}">Style Guide</a></li>
-    <li><span class="popup__open">Contact</span></li>
-  </ul>
+	<a class="editor-link btn" href="cloudcannon:collections/_data/navigation.yml" class="btn"><strong>&#9998;</strong> Edit navigation</a>
+	{% for link in site.data.navigation %}
+	{% assign class = "" %}
+
+		{% if link.link == page.url %}
+			{% assign class = class | append: " active" %}
+		{% endif %}
+		<a href="{% include relative-src.html src=link.link %}" class="{{ class }}">{{ link.name }}</a>
+	{% endfor %}
 </nav>
