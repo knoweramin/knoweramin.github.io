@@ -1,31 +1,39 @@
 ---
-title: Home
+layout: default
+current: home
+class: 'home-template'
+navigation: True
 ---
-<section class="posts">
-	{% for post in paginator.posts %}
-		<article class="post">
-			{% include post-heading.html post=post %}
-			<div class="image">
-				<img src="{{ post.featured_image }}" alt="{{ post.title }}">
-			</div>
 
-			{{ post.excerpt }}
+<!-- < default -->
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
 
-			<p><a class="button" href="{{ post.url }}">Read more</a></p>
-		</article>
-	{% endfor %}
+<!-- The big featured header, it uses blog cover image as a BG if available -->
+<header class="site-header outer {% if page.cover or site.cover %}" style="background-image:  url({{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% elsif site.cover %}{{ site.cover }}{% endif %}) {% else %}no-cover{% endif %}">
+    <div class="inner">
+        <div class="site-header-content">
+            <h1 class="site-title">
+                {% if site.logo %}
+                    <img class="site-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}"/>
+                {% else %}
+                    {{ site.title }}
+                {% endif %}
+            </h1>
+            <h2 class="site-description">{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</h2>
+        </div>
+        {% include site-nav.html %}
+    </div>
+</header>
 
-	{% if paginator.total_pages > 1 %}
-		<div class="pagination">
-			{% if paginator.previous_page %}
-				<a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous btn">&larr; Newer posts</a>
-			{% endif %}
+<!-- The main content area -->
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-			<span class="page_number ">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
+            {%  include post-card.html %}
+        </div>
 
-			{% if paginator.next_page %}
-				<a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next btn">Older posts &rarr;</a>
-			{% endif %}
-		</div>
-	{% endif %}
-</section>
+    </div>
+</main>
