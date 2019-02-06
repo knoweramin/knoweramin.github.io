@@ -1,208 +1,140 @@
-# Barber
-Barber is a minimal blog theme built for Jekyll. The blog theme features a masonry grid, endless scrolling, and page transitions. 💈 Barber is also available for [Ghost](https://github.com/samesies/barber-ghost).
+# Lens - Jekyll Theme
 
-![Barber](https://raw.githubusercontent.com/samesies/barber-jekyll/master/barber.jpg "Barber")
+A Jekyll version of the "Lens" theme by [HTML5 UP](https://html5up.net/).
 
-## Initial Setup
-* [Installation](#installation)
-* [Update Settings](#update-settings)
-* [Create Posts](#create-posts)
-* [Create Pages](#create-pages)
-* [Create Navigation](#create-navigation)
+![Lens Theme](assets/images/lens.jpg "Lens Theme")
 
-## Customization
-* [Contact Form](#contact-form)
-* [Social Media Links](#social-media-links)
-* [Disqus Comments](#disqus-comments)
+# How to Use
 
-## Additional Development
-* [Deployment](#deployment)
-* [Source Code](#source-code)
-* [Donations](#donations)
-* [Support](#support)
+For those unfamiliar with how Jekyll works, check out [https://jekyllrb.com/](https://jekyllrb.com/) for all the details,
+or read up on just the basics of [front matter](https://jekyllrb.com/docs/frontmatter/), [writing posts](https://jekyllrb.com/docs/posts/),
+and [creating pages](https://jekyllrb.com/docs/pages/).
 
-### Installation
-Jekyll requires all dependencies to be saved in the ````Gemfile````. Run ````bundle install```` (Install [Bundler](http://bundler.io/) if it is not already) on your command line after downloading or cloning the theme. You can then run ````bundle exec jekyll serve```` or ````npm start```` to see your development site. Run ````bundle exec jekyll build```` or ````npm run build```` to build a production ready site for deployment.
+- **GitLab**: Simply fork this repository and start editing the `_config.yml` file!  
+- **GitHub**: Fork this reposity and create a branch named `gh-pages`, then start editing the `_config.yml` file!
 
-### Update Settings
-Almost everything to personalize your site is in the ````_config.yml````. 
+# Issues
+
+If you would like to report a bug, ask a question, request a feature, feel free to do so on [the GitLab repository](https://gitlab.com/andrewbanchich/lens-jekyll-theme) and I will be more than happy to help!
+
+Alternatively, you can open an issue via email by emailing [incoming+andrewbanchich/lens-jekyll-theme@incoming.gitlab.com](mailto:incoming+andrewbanchich/lens-jekyll-theme@incoming.gitlab.com).
+
+The GitHub repository is simply a mirror of the GitLab repository.
+
+# Credits
+
+Original README from HTML5 UP:
 
 ```
-# Site/SEO settings
-email: okay@samesies.io
-baseurl: ""
-paginate: 12
-paginate_path: "/page/:num"
-permalink: /:year/:month/:day/:title/
-google_analytics: 
+Lens by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
-name: Thomas Vaeth
-title: The Barber Theme
-description: >
-  Barber is a blog theme for Jekyll built by Thomas Vaeth for Samesies using HTML, Sass, and JavaScript.
-url: http://barber.samesies.io
-twitter_username: thomasvaeth
-default_img: /assets/images/seo.jpg
-social:
-  - name: twitter
-    url: https://twitter.com/thomasvaeth
-  - name: instagram
-    url: https://www.instagram.com/thomas.vaeth/
-  - name: linkedin
-    url: https://www.linkedin.com/in/thomasvaeth/
-  - name: github
-    url: https://github.com/samesies
-  - name: codepen
-    url: https://codepen.io/thomasvaeth/
 
-# Contact settings
-contact_img: /assets/images/placeholder-28.jpg
-formcarry: https://formcarry.com/s/HkIo0nMb7
+This is Lens, a full screen (and entirely responsive) photo gallery design. Unlike previous
+designs I've done in this vein (Parallelism, for instance), this one eschews the usual
+lightbox in favor of a completely full screen experience -- one that I'm happy to say
+translates awesomely all the way down to the tiniest of mobile devices. Full instructions
+below!
 
-# Disqus settings
-disqus: test-apkdzgmqhj
+Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
+you can use for pretty much whatever.
 
-# MailChimp settings
-mailchimp_action: https://samesies.us17.list-manage.com/subscribe/post-json?u=66ddf555dab480e6a8606430b&amp;id=89b3ee034f
-mailchimp_input: b_66ddf555dab480e6a8606430b_89b3ee034f
+(* = Not included)
 
-# Author settings
-author:
-  - name: Thomas Vaeth
-    bio: Thomas Vaeth was born in New York, raised in Pennsylvania, and transplanted in Washington. He was a Web Developer at Urban Influence, but now he's a Software Engineer at Getty Images.
-    url: http://thomasvaeth.com
+Feedback, bug reports, and comments are not only welcome, but strongly encouraged :)
+
+AJ
+aj@lkn.io | @ajlkn
+
+
+Instructions:
+
+	Overview:
+
+		Lens is made up of three primary components:
+
+		- The "main wrapper": The skinny little column on the right. Home to what little
+		  "regular" content you may have (header, footer, anything else you want to cram
+		  in there), as well as ...
+
+		- The "thumbnails" section: A grid of thumbnails pointing to their respective
+		  full size images.
+
+		- The "viewer": Basically the rest of the page, and basically where your full size
+		  images will show up when a thumbnail is clicked.
+
+		Note: Only the main wrapper and the thumbnails section are actually present in
+		index.html. The viewer will be dynamically created on page load.
+
+	How it works:
+
+		Just add your thumbnails to the thumbnails section in the following format:
+
+			<article>
+				<a class="thumbnail" href="path/to/fullsize.jpg">
+					<img src="path/to/thumbnail.jpg" alt="" />
+				</a>
+				<h2>Title</h2>
+				<p>Description.</p>
+			</article>
+
+		And that's it. Lens will figure out the rest.
+
+	The "data-position" attribute:
+
+		As a full screen experience, the viewer will be subject to changes in its size and,
+		consequently, its aspect ratio. Since your full size images are basically applied as
+		backgrounds to the viewer itself, this means they'll probably (okay, definitely) get
+		cropped. All is not lost, however, as you can use the optional "data-position" attribute
+		to control how the full size image is positioned within the viewer. To do this, simply
+		add it to your thumbnail's <a> element and set it to any valid "background-position"
+		value. For example, this:
+
+			<a class="thumbnail" href="path/to/fullsize.jpg" data-position="top left">...</a>
+
+		... positions this particular full size image in the top left corner of the viewer (as
+		opposed to its center, the default), effectively limiting cropping to everything but
+		the top left corner.
+
+	Keyboard shortcuts:
+
+		Lens is set up to respond to the following keyboard shortcuts:
+
+		- Left Arrow: Go to previous image.
+		- Right Arrow: Go to next image.
+		- Up Arrow: Go to image above the current one in the thumbnails section.
+		- Down Arrow: Go to image below the current one in the thumbnails section.
+		- Space: Go to next image.
+		- Escape: Toggle the main wrapper.
+
+		Note: All keyboard shortcuts are disabled when the "xsmall" breakpoint is active
+		(since they don't really make a whole lot of sense there).
+
+	Other stuff:
+
+		- The main wrapper can be moved to the left by changing the "misc.main-side" variable
+		  in assets/sass/libs/_vars.scss to "left" (and of course recompiling your CSS).
+
+		- Additional tweakable settings can be found at the top of assets/js/main.js, but
+		  be aware most of these need to sync with certain Sass variables (see comments
+		  for details).
+
+
+Credits:
+
+	Demo Images:
+		Unsplash (unsplash.com)
+
+	Icons:
+		Font Awesome (fortawesome.github.com/Font-Awesome)
+
+	Other:
+		jQuery (jquery.com)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		Respond.js (j.mp/respondjs)
+		Skel (skel.io)
+
 ```
 
-You can change the URL the [contact form](#contact-form) is sent to, add Google Analytics, change the SEO settings, grow your website with additional authors, and much more.
-
-### Create Posts
-All posts go upder the ````_posts```` directory. You can also have a ````_drafts```` directory with posts that will on your development page, but not in production.
-
-```
----
-layout: post
-title: "Brunch Swag"
-date: 2017-02-18
-description: 
-image: /assets/images/placeholder-15.jpg
-author: Thomas Vaeth
-tags: 
-  - XOXO
-  - La Croix
----
-```
-
-The front matter has to have a layout of page. All the other fields are completely optional. If you have an ````author```` variable, then it must match an author's name in ````_config.yml```` (see [Update Settings](#update-settings)). The ````tag```` variable will add a related section to the post and popular tags to the footer.
-
-### Create Pages
-Creating a static page is the same as creating a post. The only difference is a page is in the root of the directory rather than the ````_posts```` directory.
-
-```
----
-layout: page
-title: Style Guide
-image: /assets/images/placeholder-18.jpg
----
-```
-
-You just have to make sure the front matter has a layout of page instead of post. If there is no title or image, then the page will default to the site configuration.
-
-### Create Navigation
-You can create a navigation in ````_includes/navigation.html````. Visitors can be linked directly to pages right on the top of your website.
-
-***
-
-### Contact Form
-The form uses [Formcarry](https://formcarry.com/) to send submitted messages straight to your inbox. The image on the popup is the the ````contact_img```` variable and the URL the forms sends to is the ````formcarry```` variable in ````_config.yml```` (see [Update Settings](#update-settings)).
-
-![Contact Form](http://samesies.io/assets/images/barber/doc/framed-contact-form.jpg "Contact Form")
-
-This file can be found in ````_includes/formscarry.html````. You can change the labels of the form here. After everything is set you will need to submit a message to yourself to confirm everything is correct.
-
-### Social Media Links
-[Font Awesome](http://fontawesome.io/) is used for the social media icons. The icons in the theme can be found in ````_includes/share.html```` and ````_includes/social.html````. The icons in ````_includes/share.html```` do not need to be edited unless you want to remove a certain website; however, the ones in ````_includes/social.html```` do have to be changed. You can follow the example that has been provided in ````_config.yml```` for you to link to all of your social media accounts  (see [Update Settings](#update-settings)). The naming convention has not changed from the instructions provided on Font Awesome.
-
-### Disqus Comments
-Comments can be enabled on every blog post in a few steps steps. The first step is to register your website with [Disqus](https://disqus.com/). Disqus will provide you with a shortname that you need for the next step. Once you have that the second step is to replace the ````disqus```` variable in ````_config.yml```` (see [Update Settings](#update-settings)). The third step is to open ````_includes/disqus.html```` and remove all the instructions. The final step is to visit a blog post and verify that your comments are there.
-
-***
-
-### Deployment
-GitHub Pages [does not support]((https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/)) custom plugins. The tag list and tag pagination are built using custom plugins. There are several options to avoid any errors while deploying to production.
-* Run ````bundle exec jekyll build```` or ````npm run build```` and manually add the contents of the ```_site``` folder to the ```gh-pages``` branch.
-* Link the repository to [Netlify](https://www.netlify.com/). Netlify will then rebuild the theme every time a commit is pushed to the repo.
-* Finish setting up the [s3-website](https://github.com/klaemo/s3-website) package that is already included in the theme. This would deploy the theme to AWS S3 when ```npm run deploy``` is run.
-
-### Source Code
-The source code is broken down to make finding what you need as easy as possible. Almost everything runs through ````gulpfile.js````, so you will need to run ````npm install```` on your command line before doing any additional development. You can then run ````gulp```` or ````npm run gulp```` to compile everything.
-
-```
-.
-├── _assets
-|   ├── js
-|       ├── components
-|       ├── vendor
-|       ├── _inits.js
-|       └── app.js
-|   └── scss
-|       ├── base
-|       ├── components
-|       ├── fonts
-|       ├── regions
-|       ├── tools
-|       ├── utils
-|       ├── vendor
-|       └── app.scss
-├── _includes
-|   ├── contact.html
-|   ├── disqus.html
-|   ├── footer.html
-|   ├── formcarry.html
-|   ├── head.html
-|   ├── header.html
-|   ├── navigation.html
-|   ├── pagination.html
-|   ├── post-card.html
-|   ├── share.html
-|   ├── social.html
-|   └── subscribe_form.html
-├── _layouts
-|   ├── compress.html
-|   ├── default.html
-|   ├── page.html
-|   ├── post.html
-|   └── tag.html
-├── _plugins
-├── _posts
-├── _site
-├── assets
-|   ├── css
-|   ├── images
-|   ├── js
-├── .eslintrc
-├── .gitignore
-├── .stylelintrc
-├── 404.html
-├── _config.yml
-├── Gemfile
-├── Gemfile.lock
-├── gulpfile.js
-├── index.html
-├── package.json
-├── README.md
-├── style-guidle.html
-└── subscribe.html
-```
-
-The CSS is written in Sass. The JavaScript is written in ES6, so your code is up to date with the newest standards.
-
-### Donations
-Barber has been released for free. Similar themes cost around $29 on [ThemeForest](https://themeforest.net/category/static-site-generators/jekyll). Any donations would be greatly appreciated after the work that went into releasing Barber.
-
-* PayPal – <https://www.paypal.me/samesies>
-* Bitcoin – 1PSzNmcfAFJY1PtBK5u9R5bTGfF7KAuLcq
-* Ethereum – 0x392F7116e4171F1D740397B6000EadD2e4bb9670
-* Litecoin – LSH9AnjcUTV5T7PUxXQuxPqb9W5aSR9GEP
-
-### Support
-Email <okay@samesies.io> if you need any additional support with Barber.
+Repository [Jekyll logo](https://github.com/jekyll/brand) icon licensed under a [Creative Commons Attribution 4.0 International License](http://choosealicense.com/licenses/cc-by-4.0/).
