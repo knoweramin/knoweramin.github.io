@@ -1,4 +1,8 @@
-node_modules
-prepared
-archive.zip
-presentation.pdf
+.env
+.DS_Store
+.s3-website.json
+node_modules/
+
+_site
+.sass-cache
+.jekyll-metadata
